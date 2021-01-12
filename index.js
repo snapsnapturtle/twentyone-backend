@@ -68,9 +68,7 @@ io.on('connection', (socket) => {
         users = users.filter(it => it.id !== socket.id);
         io.sockets.emit(EVENTS.USERS_CHANGED, users);
 
-console.log('before', cursors)
         cursors = cursors.filter(it => it.id !== socket.id)
-        console.log('left', cursors)
         io.sockets.emit(EVENTS.CURSORS_UPDATED, cursors)
     });
 });
