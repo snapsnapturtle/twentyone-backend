@@ -1,6 +1,7 @@
-const express = require('express');
-const tokensRouter = require('./tokens.router');
-const { getSession, getSessions } = require('../service/session.service');
+import express from 'express';
+import { getSession, getSessions } from '../service/session.service';
+import { router as tokensRouter } from './tokens.router';
+
 const router = express.Router({
     mergeParams: true
 });
@@ -25,4 +26,6 @@ router.get('/:key', async (req, res) => {
 
 router.use('/:key/tokens', tokensRouter);
 
-module.exports = router;
+export {
+    router
+};

@@ -1,16 +1,16 @@
-const { io } = require('../config/socket');
-const { logger } = require('../config/logger');
-const { toTokenResponse } = require('../mapper/toTokenResponse');
-const { getTokensForSession, updateTokenPosition } = require('../service/token.service');
-const { getSession } = require('../service/session.service');
+import { logger } from '../config/logger';
+import { io } from '../config/socket';
+import { toTokenResponse } from '../mapper/toTokenResponse';
+import { getSession } from '../service/session.service';
+import { getTokensForSession, updateTokenPosition } from '../service/token.service';
 
 const EVENTS = {
     UPDATE_TOKEN_POSITION: 'update_token_position',
     TOKEN_POSITIONS_CHANGED: 'token_positions_changed'
 };
 
-io.on('connection', async (socket) => {
-    const room = socket.handshake['query']['r_var'];
+io.on('connection', async (socket: any) => {
+    const room = socket.handshake[ 'query' ][ 'r_var' ];
 
     if (!room) {
         logger.warn('client attempted to connect without a room');
@@ -33,7 +33,7 @@ io.on('connection', async (socket) => {
         socket.emit(EVENTS.TOKEN_POSITIONS_CHANGED, tokens.map(toTokenResponse));
     });
 
-    socket.on(EVENTS.UPDATE_TOKEN_POSITION, async (token) => {
+    socket.on(EVENTS.UPDATE_TOKEN_POSITION, async (token: { id: number, x: number, y: number }) => {
         await updateTokenPosition(session.$id(), token.id, token.x, token.y);
         const tokens = await getTokensForSession(session.$id());
 

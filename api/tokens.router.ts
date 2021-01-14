@@ -1,7 +1,8 @@
-const express = require('express');
-const { io } = require('../config/socket');
-const { getTokensForSession, createToken } = require('../service/token.service');
-const { getSession } = require('../service/session.service');
+import express from 'express';
+import { io } from '../config/socket';
+import { getSession } from '../service/session.service';
+import { createToken, getTokensForSession } from '../service/token.service';
+
 const router = express.Router({
     mergeParams: true
 });
@@ -33,4 +34,4 @@ router.post('/', async function createTokenForSession(req, res) {
     return res.send(createdToken);
 });
 
-module.exports = router;
+export { router };

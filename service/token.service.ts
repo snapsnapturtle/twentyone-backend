@@ -1,7 +1,7 @@
-const { Token } = require('../models/Token');
-const { logger } = require('../config/logger');
+import { logger } from '../config/logger';
+import {Token} from '../models/Token';
 
-async function createToken(sessionId, name, positionX = 0, positionY = 0) {
+export async function createToken(sessionId: number, name: string, positionX = 0, positionY = 0) {
     const token = await Token.query().insert({
         name: name,
         id_session: sessionId,
@@ -14,19 +14,14 @@ async function createToken(sessionId, name, positionX = 0, positionY = 0) {
     return token;
 }
 
-async function getTokensForSession(sessionId) {
+export async function getTokensForSession(sessionId: number) {
     return Token.query().where({ id_session: sessionId });
 }
 
-async function updateTokenPosition(sessionId, tokenId, positionX, positionY) {
+export async function updateTokenPosition(sessionId: number, tokenId: number, positionX: number, positionY: number) {
     return Token.query().where({ id_session: sessionId, id: tokenId }).patch({
         position_x: positionX,
         position_y: positionY
     });
 }
 
-module.exports = {
-    createToken,
-    getTokensForSession,
-    updateTokenPosition
-};

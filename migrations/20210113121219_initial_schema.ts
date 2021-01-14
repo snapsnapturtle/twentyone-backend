@@ -1,6 +1,8 @@
 'use strict';
 
-exports.up = (knex) => {
+import Knex from 'knex';
+
+exports.up = (knex: Knex) => {
     return knex.schema
         .createTable('tokens', table => {
             table.increments('id').primary();
@@ -16,7 +18,7 @@ exports.up = (knex) => {
         });
 };
 
-exports.down = (knex) => {
+exports.down = (knex: Knex) => {
     return knex.schema
         .dropTableIfExists('tokens')
         .dropTableIfExists('sessions');
