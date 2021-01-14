@@ -9,7 +9,4 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(bodyParser.json());
 
-export {
-    app,
-    server
-};
+export { app, server };

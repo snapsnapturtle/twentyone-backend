@@ -4,7 +4,7 @@ import Knex from 'knex';
 
 exports.up = (knex: Knex) => {
     return knex.schema
-        .createTable('tokens', table => {
+        .createTable('tokens', (table) => {
             table.increments('id').primary();
             table.string('name');
             table.string('asset_url');
@@ -12,14 +12,12 @@ exports.up = (knex: Knex) => {
             table.integer('position_y');
             table.integer('id_session');
         })
-        .createTable('sessions', table => {
+        .createTable('sessions', (table) => {
             table.increments('id').primary();
             table.string('session_key');
         });
 };
 
 exports.down = (knex: Knex) => {
-    return knex.schema
-        .dropTableIfExists('tokens')
-        .dropTableIfExists('sessions');
+    return knex.schema.dropTableIfExists('tokens').dropTableIfExists('sessions');
 };

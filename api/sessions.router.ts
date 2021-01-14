@@ -26,6 +26,4 @@ router.get('/:key', async (req, res) => {
 
 router.use('/:key/tokens', tokensRouter);
 
-export {
-    router
-};
+export { router };

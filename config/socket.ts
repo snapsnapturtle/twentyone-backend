@@ -1,7 +1,8 @@
-const socketIO = require('socket.io');
-const { server } = require('./express');
+import ioServer from 'socket.io';
+import { server } from './express';
 
-export const io = socketIO(server, {
+// @ts-ignore
+export const io = ioServer(server, {
     cors: {
         origin: '*'
     }

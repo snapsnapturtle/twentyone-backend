@@ -10,7 +10,7 @@ const EVENTS = {
 };
 
 io.on('connection', async (socket: any) => {
-    const room = socket.handshake[ 'query' ][ 'r_var' ];
+    const room = socket.handshake['query']['r_var'];
 
     if (!room) {
         logger.warn('client attempted to connect without a room');
@@ -33,7 +33,7 @@ io.on('connection', async (socket: any) => {
         socket.emit(EVENTS.TOKEN_POSITIONS_CHANGED, tokens.map(toTokenResponse));
     });
 
-    socket.on(EVENTS.UPDATE_TOKEN_POSITION, async (token: { id: number, x: number, y: number }) => {
+    socket.on(EVENTS.UPDATE_TOKEN_POSITION, async (token: { id: number; x: number; y: number }) => {
         await updateTokenPosition(session.$id(), token.id, token.x, token.y);
         const tokens = await getTokensForSession(session.$id());
 

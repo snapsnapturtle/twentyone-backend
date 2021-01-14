@@ -1,5 +1,5 @@
 import { logger } from '../config/logger';
-import {Token} from '../models/Token';
+import { Token } from '../models/Token';
 
 export async function createToken(sessionId: number, name: string, positionX = 0, positionY = 0) {
     const token = await Token.query().insert({
@@ -24,4 +24,3 @@ export async function updateTokenPosition(sessionId: number, tokenId: number, po
         position_y: positionY
     });
 }
-
