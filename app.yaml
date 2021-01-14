@@ -1,4 +1,4 @@
-runtime: nodejs14
+runtime: nodejs
 env: flex
 
 # Use only a single instance, so that this local-memory-only chat app will work

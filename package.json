@@ -2,16 +2,22 @@
   "name": "twentyone-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run migrate && node app.js",
+    "migrate": "knex migrate:latest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "socket.io": "^3.0.4"
+    "knex": "^0.21.15",
+    "objection": "^2.2.6",
+    "socket.io": "^3.0.4",
+    "sqlite3": "^5.0.1",
+    "winston": "^3.3.3"
   }
 }
