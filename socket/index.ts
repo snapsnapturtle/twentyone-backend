@@ -6,7 +6,7 @@ import { getTokensForSession, updateTokenPosition } from '../service/token.servi
 import { publishTokenPositions } from './token.publisher';
 
 io.on('connection', async (socket: any) => {
-    const room = socket.handshake[ 'query' ][ 'r_var' ];
+    const room = socket.handshake['query']['r_var'];
 
     if (!room) {
         logger.warn('client attempted to connect without a room');

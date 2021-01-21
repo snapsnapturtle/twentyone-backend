@@ -20,7 +20,7 @@ router.get<{ key: string }, TokenListResponse>('/', async (req, res, next) => {
     const tokensForSession = await getTokensForSession(session.$id());
 
     return res.send({
-        tokens: tokensForSession.map(it => ({
+        tokens: tokensForSession.map((it) => ({
             id: it.id,
             name: it.name,
             // todo: return asset url

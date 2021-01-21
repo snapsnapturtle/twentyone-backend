@@ -7,11 +7,11 @@ const router = express.Router({
     mergeParams: true
 });
 
-router.get<{}, SessionListResponse>('/', async function (req, res) {
+router.get<never, SessionListResponse>('/', async function (req, res) {
     const sessions = await getSessions();
 
     return res.json({
-        sessions: sessions.map(it => ({
+        sessions: sessions.map((it) => ({
             id: it.id,
             sessionKey: it.session_key
         }))
