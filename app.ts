@@ -1,12 +1,13 @@
+import { router as sessionsRouter } from './controller/sessions.router';
+import { router as tokensRouter } from './controller/tokens.router';
+import './config/database';
+import { app, server } from './config/express';
 import { logger } from './config/logger';
-import {server, app} from './config/express';
-import {router as sessionsRouter} from './api/sessions.router';
-import './config/database'
-import './socket/index'
+import './socket/index';
 
 const port = Number.parseInt(process.env.PORT || '8080');
 
 app.use('/v1/sessions', sessionsRouter);
+app.use('/v1/sessions/:key/tokens', tokensRouter);
 
 server.listen(port, () => logger.info(`server started on port ${port}`));
-

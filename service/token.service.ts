@@ -1,7 +1,7 @@
 import { logger } from '../config/logger';
 import { Token } from '../models/Token';
 
-export async function createToken(sessionId: number, name: string, positionX = 0, positionY = 0) {
+export async function createToken(sessionId: number, name?: string, positionX = 0, positionY = 0) {
     const token = await Token.query().insert({
         name: name,
         id_session: sessionId,
