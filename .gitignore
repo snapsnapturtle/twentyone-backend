@@ -1,4 +1,5 @@
 .idea/
 node_modules/
-local.db
 dist/
+
+local.db

@@ -1,17 +1,19 @@
 {
   "name": "twentyone-backend",
   "version": "1.0.0",
-  "description": "",
   "main": "app.ts",
   "scripts": {
     "start": "node ./dist/app.js",
-    "build": "rm -rf ./dist && tsc",
+    "build": "tsc",
+    "postinstall": "npm run build && rm -v -rf src",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "migrate": "knex migrate:latest --knexfile ./dist/knexfile.js"
+    "migrate": "tsc && knex migrate:latest --knexfile ./dist/knexfile.js"
   },
-  "keywords": [],
+  "engines": {
+    "node": "14.x"
+  },
   "author": "",
-  "license": "ISC",
+  "license": "NONE",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
