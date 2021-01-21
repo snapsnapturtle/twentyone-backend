@@ -10,5 +10,12 @@ export default {
                 conn.run('PRAGMA foreign_keys = ON', cb);
             },
         }
+    },
+    production: {
+        client: 'pg',
+        connection: {
+            url: process.env.DATABASE_URL,
+            ssl: true
+        }
     }
 };
