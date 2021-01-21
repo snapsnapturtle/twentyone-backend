@@ -1,5 +1,5 @@
 import express from 'express';
-import { getSession, getSessions } from '../service/session.service';
+import { createSession, getSession, getSessions } from '../service/session.service';
 import { SessionListResponse } from './message/SessionListResponse';
 import { SessionResponse } from './message/SessionResponse';
 
@@ -26,6 +26,15 @@ router.get<{ key: string }, SessionResponse>('/:key', async function (req, res) 
     }
 
     return res.send({ id: session.$id(), sessionKey: session.session_key });
+});
+
+router.post<{ key: string }, SessionResponse>('/', async function (req, res) {
+    const newSession = await createSession();
+
+    return res.json({
+        id: newSession.id,
+        sessionKey: newSession.session_key
+    });
 });
 
 export { router };

@@ -2,11 +2,8 @@ import { logger } from '../config/logger';
 import { Session } from '../models/Session';
 
 export async function createSession() {
-    throw Error('not implemented');
-
-    // todo: generate a random session key
     const session = await Session.query().insert({
-        session_key: '55'
+        session_key: Math.random().toString(36).substring(4)
     });
 
     logger.info(`new session created <${session.id}>`);
