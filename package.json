@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "npm run build && npm run migrate  && node ./dist/app.js",
+    "start": "node ./dist/app.js",
     "build": "rm -rf ./dist && tsc",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "migrate": "knex migrate:latest --knexfile ./dist/knexfile.js"
