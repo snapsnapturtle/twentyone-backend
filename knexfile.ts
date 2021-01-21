@@ -1,21 +1,18 @@
-export default {
+module.exports = {
     development: {
         client: 'sqlite3',
         useNullAsDefault: true,
         connection: {
-            filename: './local.db',
+            filename: './local.db'
         },
         pool: {
             afterCreate: (conn: any, cb: any) => {
                 conn.run('PRAGMA foreign_keys = ON', cb);
-            },
+            }
         }
     },
     production: {
         client: 'pg',
-        connection: {
-            uri: process.env.DATABASE_URL,
-            ssl: true
-        }
+        connection: process.env.DATABASE_URL
     }
 };
