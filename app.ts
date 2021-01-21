@@ -5,7 +5,7 @@ import { app, server } from './config/express';
 import { logger } from './config/logger';
 import './socket/index';
 
-const port = Number.parseInt(process.env.PORT || '8080');
+const port = Number.parseInt(process.env.PORT!!);
 
 app.use('/v1/sessions', sessionsRouter);
 app.use('/v1/sessions/:key/tokens', tokensRouter);
