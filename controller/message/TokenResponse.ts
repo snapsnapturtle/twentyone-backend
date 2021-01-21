@@ -5,5 +5,5 @@ export interface TokenResponse {
     position: {
         x: number;
         y: number;
-    }
+    };
 }

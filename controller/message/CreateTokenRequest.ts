@@ -4,5 +4,5 @@ export interface CreateTokenRequest {
     position: {
         x: number;
         y: number;
-    }
+    };
 }
