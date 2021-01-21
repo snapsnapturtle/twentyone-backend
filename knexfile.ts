@@ -14,7 +14,7 @@ export default {
     production: {
         client: 'pg',
         connection: {
-            url: process.env.DATABASE_URL,
+            uri: process.env.DATABASE_URL,
             ssl: true
         }
     }
