@@ -1,5 +1,6 @@
-import { SessionResponse } from './SessionResponse';
-
 export interface SessionListResponse {
-    sessions: SessionResponse[];
+    sessions: {
+        id: number;
+        sessionKey: string;
+    }[];
 }

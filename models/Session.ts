@@ -1,4 +1,5 @@
 import { Model } from 'objection';
+import { Board } from './Board';
 
 export class Session extends Model {
     id!: number;
@@ -7,4 +8,15 @@ export class Session extends Model {
     static get tableName() {
         return 'sessions';
     }
+
+    static relationMappings = {
+        boards: {
+            relation: Model.HasManyRelation,
+            modelClass: Board,
+            join: {
+                from: 'sessions.id',
+                to: 'boards.id_session'
+            }
+        }
+    };
 }

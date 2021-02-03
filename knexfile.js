@@ -6,13 +6,19 @@ module.exports = {
             filename: './local.db'
         },
         pool: {
-            afterCreate: (conn: any, cb: any) => {
+            afterCreate: (conn, cb) => {
                 conn.run('PRAGMA foreign_keys = ON', cb);
             }
+        },
+        migrations: {
+            directory: './dist/migrations'
         }
     },
     production: {
         client: 'pg',
-        connection: process.env.DATABASE_URL
+        connection: process.env.DATABASE_URL,
+        migrations: {
+            directory: './dist/migrations'
+        }
     }
 };

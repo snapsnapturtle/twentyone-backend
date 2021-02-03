@@ -7,7 +7,7 @@
     "build": "tsc",
     "postinstall": "npm run build && rm -v -rf src",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "migrate": "knex migrate:latest --knexfile ./dist/knexfile.js"
+    "migrate": "knex migrate:latest --knexfile ./knexfile.js"
   },
   "engines": {
     "node": "14.x"
