@@ -1,7 +1,6 @@
 import { BoardResponse } from './BoardResponse';
 
-export interface SessionResponse {
+export interface CampaignResponse {
     id: number;
-    sessionKey: string;
     boards: BoardResponse[];
 }

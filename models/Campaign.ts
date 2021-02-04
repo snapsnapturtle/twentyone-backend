@@ -1,12 +1,11 @@
 import { Model } from 'objection';
 import { Board } from './Board';
 
-export class Session extends Model {
+export class Campaign extends Model {
     id!: number;
-    session_key!: string;
 
     static get tableName() {
-        return 'sessions';
+        return 'campaigns';
     }
 
     static relationMappings = {
@@ -14,8 +13,8 @@ export class Session extends Model {
             relation: Model.HasManyRelation,
             modelClass: Board,
             join: {
-                from: 'sessions.id',
-                to: 'boards.id_session'
+                from: 'campaigns.id',
+                to: 'boards.id_campaign'
             }
         }
     };

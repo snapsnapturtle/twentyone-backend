@@ -14,7 +14,6 @@ exports.up = (knex: Knex) => {
         })
         .createTable('sessions', (table) => {
             table.increments('id').primary();
-            table.string('session_key');
         });
 };
 

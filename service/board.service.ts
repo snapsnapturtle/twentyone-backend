@@ -1,6 +1,6 @@
 import { Board } from '../models/Board';
-import { Session } from '../models/Session';
+import { Campaign } from '../models/Campaign';
 
-export async function getBoardsForSession(sessionKey: string) {
-    return Session.relatedQuery<Board>('boards').for(Session.query().findOne({ session_key: sessionKey }));
+export async function getAllBoardsForCampaign(campaignId: number) {
+    return Campaign.relatedQuery<Board>('boards').for(campaignId);
 }
