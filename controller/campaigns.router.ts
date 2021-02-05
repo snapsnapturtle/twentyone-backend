@@ -17,7 +17,8 @@ router.get<{ id: number }, CampaignResponse>('/:id', async function (req, res) {
     const boards = await getAllBoardsForCampaign(campaign.id);
 
     return res.send({
-        id: campaign.$id(),
+        id: campaign.id,
+        name: campaign.name,
         boards: boards.map((it) => ({
             id: it.id,
             name: it.name,
@@ -34,6 +35,7 @@ router.post<{ key: string }, CampaignResponse>('/', async function (req, res) {
 
     return res.json({
         id: createdCampaign.id,
+        name: createdCampaign.name,
         boards: []
     });
 });

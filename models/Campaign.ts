@@ -3,6 +3,7 @@ import { Board } from './Board';
 
 export class Campaign extends Model {
     id!: number;
+    name!: string;
 
     static get tableName() {
         return 'campaigns';

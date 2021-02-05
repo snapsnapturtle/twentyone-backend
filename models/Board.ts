@@ -2,7 +2,7 @@ import { Model } from 'objection';
 
 export class Board extends Model {
     id!: number;
-    id_campaign!: string;
+    id_campaign!: number;
     name!: string;
     width!: number;
     height!: number;
