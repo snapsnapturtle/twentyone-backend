@@ -1,5 +1,5 @@
 import express from 'express';
-import { updateBoardInformation } from '../service/board.service';
+import { deleteBoard, updateBoardInformation } from '../service/board.service';
 import { BoardResponse } from './message/BoardResponse';
 import { UpdateBoardRequest } from './message/UpdateBoardRequest';
 
@@ -24,6 +24,12 @@ router.put<{ id: number }, BoardResponse, UpdateBoardRequest>('/:id', async func
         gridType: updatedBoard.grid_type,
         gridLineColor: updatedBoard.grid_line_color
     });
+});
+
+router.delete<{ id: number }>('/:id', async function (req, res) {
+    await deleteBoard(req.params.id);
+
+    return res.send();
 });
 
 export { router };

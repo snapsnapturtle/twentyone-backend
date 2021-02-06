@@ -12,3 +12,9 @@ export function publishBoardUpdate(campaignId: number, board: Board) {
         gridLineColor: board.grid_line_color
     });
 }
+
+export function publishBoardDelete(campaignId: number, boardId: number) {
+    io.sockets.to(campaignId.toString()).emit(Events.DELETE_BOARD, {
+        boardId
+    });
+}
